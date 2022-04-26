@@ -42,33 +42,34 @@ class BD
     public function atualizar($dados)
     {
         $conn = $this->connection();
-        $sql = "UPDATE usuario SET 'nome'= ?,'telefone'=?, 'cpf'=? WHERE 'id'=?";
+        $sql = "UPDATE usuario SET 'nome'= ?,'telefone'=?, 'cpf'=? WHERE 'ID'=?";
         $st = $conn->prepare($sql);
-        $arrayDados = [$dados['nome'], $dados['cpf'], $dados['telefone'], $dados['id']];
+        $arrayDados = [$dados['nome'], $dados['cpf'], $dados['telefone'], $dados['ID']];
         $st->execute($arrayDados);
 
         return $st;
     }
 
-    public function deletar($dados)
+    public function deletar($id)
     {
         $conn = $this->connection();
-        $sql = "DELETE FROM usuario WHERE 'id'=?";
+        $sql = "DELETE FROM usuario WHERE 'ID'=?";
         $st = $conn->prepare($sql);
-        $arrayDados = [$dados['id']];
+        $arrayDados = [$id];
         $st->execute($arrayDados);
 
         return $st;
     }
 
-    public function buscar($dados)
+    public function buscar($id)
     {
         $conn = $this->connection();
-        $sql = "SELECT * FROM usuario WHERE 'id' = ?";
+        $sql = "SELECT * FROM usuario WHERE 'ID' = ?";
+
         $st = $conn->prepare($sql);
-        $arrayDados = [$dados['id']];
+        $arrayDados = [$id];
         $st->execute($arrayDados);
 
-        return $st;
+        return $st->fetchObject();
     }
 }

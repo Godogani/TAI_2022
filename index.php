@@ -1,6 +1,3 @@
-<?php
-include "./database/bd.php"
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,40 +10,9 @@ include "./database/bd.php"
 </head>
 
 <body>
-    <h1 class="title">DALE DALE BD YES BABY</h1>
-    <div class="formulario">
-        <form action="index.php" method="post">
-            <label>Nome teu manito</label>
-            <input type="text" id="nome" name="nome"><br>
-            <label>Teu CPF manito</label>
-            <input type="text" id="cpf" name="cpf"><br>
-            <label>TEU telefone manito</label>
-            <input type="text" id="telefone" name="telefone"><br><br>
-            <input type="submit" value="enviar">
-        </form>
-    </div>
-    <br>
-    <hr>
-    <br>
-
-    <?php
-    $objBD = new BD();
-    $objBD->connection();
-    $result = $objBD->select_data();
-    foreach ($result as $info) {
-        echo "ID: " . $info['ID'] . " Nome: " . $info['nome'] . " Telefone: " . $info['telefone'] . " CPF: " . $info['cpf'] . "<br>";
-    }
-
-    if (!empty($_POST)) {
-        echo "Salvar";
-        var_dump($_POST);
-        $objBD->inserir($_POST);
-        header("Location: index.php");
-    }
-
-
-
-    ?>
+    <h1 class="title">WELCOME TO THE PUTARIA BABY</h1>
+   <a href="paginas/listaUsuario.php">Checa a listagem seu cuzão</a><br/>
+    <a href="paginas/usuarioForm.php">Checa o formulário vadia</a>
 </body>
 
 </html>
