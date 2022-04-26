@@ -18,7 +18,7 @@ include "../database/bd.php"
 
     <div class="formulario">
         <form action="./listaUsuario.php" method="get">
-        <input type="hidden" name="ID" value=" value="<?php echo !empty($result->nome) ? $result->nome : "" ?> >
+            <input type="hidden" id="id" name="id" value="<?php echo !empty($result->ID) ? $result->ID : "" ?> ">
             <label>Nome teu manito</label>
             <input type="text" id="nome" name="nome" value="<?php echo !empty($result->nome) ? $result->nome : "" ?> "><br>
             <label>Teu CPF manito</label>
@@ -42,6 +42,9 @@ if (!empty($_GET['ID'])) {
 }
 
 if (!empty($_POST)) {
+    if(!empty($_POST['ID'])){
+        $objBD->atualizar($_POST);
+    }
     echo "Salvar";
     var_dump($_POST);
     $objBD->inserir($_POST);
