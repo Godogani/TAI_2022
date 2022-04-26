@@ -30,4 +30,14 @@ class BD
 
         return $st;
     }
+    public function update($dados)
+    {
+        $conn = $this->connection();
+        $sql = "UPDATE usuario SET 'nome'= ?,'telefone'=?, 'cpf'=? WHERE id=?";
+        $st = $conn->prepare($sql);
+        $arrayDados = [$dados['nome'], $dados['cpf'], $dados['telefone']];
+        $st->execute($arrayDados);
+
+        return $st;
+    }
 }
